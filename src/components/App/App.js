@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import Search from '../SearchPage/searchPage';
 
 import './App.css';
 
@@ -55,6 +56,12 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/search"
+              component={Search}
             />
           
             {/* If none of the other routes matched, we will show a 404. */}
