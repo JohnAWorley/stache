@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css'; 
+import './Nav.css';
+
+
+
 
 
 
@@ -10,15 +13,13 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
+
 class Nav extends Component {
 
-  componentDidMount() {
-  console.log(this.props.user);
-  
-    
-  }
-  render(){
-    return(
+
+  render() {
+    return (
+
       <div className="nav">
         <Link to="/home">
           <h2 className="nav-title">Prime Solo Project</h2>
@@ -36,10 +37,6 @@ class Nav extends Component {
               <Link className="nav-link" to="/info">
                 Info Page
           </Link>
-              <Link className="nav-link" to="/search">
-                Search Art
-          </Link>
-
               <LogOutButton className="nav-link" />
             </>
           )}

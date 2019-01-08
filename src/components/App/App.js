@@ -17,8 +17,17 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import Search from '../SearchPage/searchPage';
+import SearchResults from '../SearchResultsPage/searchResults';
+import SingleResultPage from '../SingleResultPage/singleResultPage';
+import SeenArt from '../SeenArtPage/seenArtPage';
+import WantToSeePage from '../WantToSeePage/wantToSeePage';
+import Categories from '../CategoriesPage/categoriesPage';
+
+
+// import FinalDrawer from '../DrawerComponent/Drawer';
 
 import './App.css';
+
 
 class App extends Component {
   componentDidMount () {
@@ -63,7 +72,36 @@ class App extends Component {
               path="/search"
               component={Search}
             />
-          
+
+            <ProtectedRoute
+              exact
+              path="/searchResults"
+              component={SearchResults}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/singleResult"
+              component={SingleResultPage}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/seenArt"
+              component={SeenArt}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/wantToSeePage"
+              component={WantToSeePage}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/categories"
+              component={Categories}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
