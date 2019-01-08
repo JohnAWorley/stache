@@ -4,13 +4,16 @@ import axios from 'axios';
 
 function* fetchArt(action) {
     try {
-        const artQuery = yield call(axios.get, `/api/art/${action.payload}`); // get shelf item
+    
+        const artQuery = yield call(axios.get, `/api/art/${action.payload}`); // get art items
         yield dispatch({ type: 'SET_ART', payload: artQuery.data })
+        
+        
     } catch (error) {
-        console.log('Error getting art in get Search Saga:', error);
+        console.log('Error getting art in Search Saga:', error);
     }
 }
-function* fetchShelfWatcher() {
+function* fetchArtWatcher() {
     yield takeLatest('FETCH_ART', fetchArt);
 }
-export default fetchShelfWatcher;
+export default fetchArtWatcher;
