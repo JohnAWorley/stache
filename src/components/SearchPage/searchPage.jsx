@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 
 const mapStateToProps = reduxStore => {
@@ -24,7 +25,8 @@ class Search extends Component {
 
     handleClick = () => {
         this.props.dispatch({ type: 'FETCH_ART', payload: this.state.search })
-        console.log(this.state.search);
+        this.props.history.push('/searchResults')
+        
         
     }
 
@@ -32,11 +34,11 @@ class Search extends Component {
         return(
             <div>
             <p>search page</p>
-                <input onChange={this.handleChange} type="text" placeholder="search image" />
+                <input onChange={this.handleChange} type="text" placeholder="search title" />
                 <button onClick={this.handleClick}>Submit Search</button>
             </div>
         )
     }
 };
 
-export default connect(mapStateToProps)(Search);
+export default withRouter(connect(mapStateToProps)(Search));

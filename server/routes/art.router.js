@@ -13,11 +13,10 @@ router.get('/:id', (req, res) => {
         params: {
             apikey: `${process.env.HARVARD_API_KEY}`,
             title: `${id}`,
-            fields: "objectnumber,title,dated"
+            fields: "objectnumber,title,dated,primaryimageurl"
         }
     }).then(response => {
             console.log('woot');
-            
             console.log(response.data);
             res.send(response.data);
         }).catch(error => {

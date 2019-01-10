@@ -5,7 +5,10 @@ import axios from 'axios';
 function* fetchArt(action) {
     try {
     
+        
         const artQuery = yield call(axios.get, `/api/art/${action.payload}`); // get art items
+        console.log(`in fetchart saga back with data`, artQuery.data);
+        
         yield dispatch({ type: 'SET_ART', payload: artQuery.data })
         
         
