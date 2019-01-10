@@ -9,14 +9,9 @@ router.get('/:id', (req, res) => {
     let id = req.params.id;
     console.log(id);
 
-    axios.get(`https://api.harvardartmuseums.org/object/`, {
-        params: {
-            apikey: `${process.env.HARVARD_API_KEY}`,
-            title: `${id}`,
-            fields: "objectnumber,title,dated,primaryimageurl"
-        }
-    }).then(response => {
-        console.log('woot');
+    axios.get(`https://iiif.harvardartmuseums.org/manifests/object/${id}?apikey=${process.env.HARVARD_API_KEY}`
+    ).then(response => {
+        console.log('in fetch single piece');
         console.log(response.data);
         res.send(response.data);
     }).catch(error => {

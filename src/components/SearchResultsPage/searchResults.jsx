@@ -35,7 +35,7 @@ class SearchResults extends Component {
     }
 
     render() {
-        let singlePiece = this.props.reduxStore.search.map((piece) => {
+        let singlePieceOfResults = this.props.reduxStore.search.map((piece) => {
 
 
             return <div value = {piece.id} key={piece.id} onClick= {() => {this.handleCLick(piece.id)}}> 
@@ -51,7 +51,7 @@ class SearchResults extends Component {
         })
         return (
             <div>
-                {singlePiece}
+                {singlePieceOfResults}
             </div>
         )
     }
