@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = reduxStore => {
     return {
-        reduxStore
+        piece: reduxStore.piece
     }
 }
 
@@ -14,15 +14,11 @@ class SingleResultPage extends Component{
        
     }
     render(){
-        // console.log(`single result page drilling in`, this.props.reduxStore.piece.sequences[0].canvases[0].images[0].resource["@id"]);
-        // let image = '';
-        if (this.props.reduxStore.piece.sequences && this.props.reduxStore.piece.sequences[0].canvases[0]){
-        //  image = this.props.reduxStore.piece.sequences[0].canvases[0].images[0].resource["@id"];
-            return <img src={this.props.reduxStore.piece.sequences[0].canvases[0].images[0].resource["@id"]} alt=""></img>
-        } else {
-            
-           return <div></div>
-        }
+        console.log(this.props.piece.imageUrl);
+        
+        return(
+            <img src={this.props.piece.imageUrl} alt=""></img>
+        )
         
     }
 }
