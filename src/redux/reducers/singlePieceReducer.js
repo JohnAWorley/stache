@@ -1,10 +1,14 @@
-const defaultState = {
-    imageUrl: "",
-    title: "",
 
-}
+
 
 const piece = (state = {}, action) => {
+
+    const defaultState = {
+        imageUrl: "",
+        title: "",
+        metadata: {}
+    }
+    
     switch (action.type) {
         case 'SET_PIECE':
             if (action.payload.sequences && action.payload.sequences[0].canvases[0]){
@@ -13,8 +17,9 @@ const piece = (state = {}, action) => {
                 defaultState.imageUrl = ""
             }
 
-            defaultState.title = ""
-
+            defaultState.title = action.payload.label ;
+            defaultState.metadata = action.payload.metadata ;
+           
             return defaultState;
         default:
             return state;
