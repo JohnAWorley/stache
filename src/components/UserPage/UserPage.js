@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import FinalDrawer from '../DrawerComponent/Drawer';
 
 
 // this could also be written with destructuring parameters as:
@@ -8,7 +9,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
   <div>
-    
+    <FinalDrawer />
     <h1 id="welcome">
       Welcome, { props.user.username }!
     </h1>

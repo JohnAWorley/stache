@@ -10,7 +10,7 @@ const mapStateToProps = reduxStore => {
 
 class SingleResultPage extends Component {
     componentDidUpdate() {
-        console.log(`metadata`, this.props.piece.metadata);
+        console.log(`metadata`, this.props.piece.metadata[4]);
         
 
     }
@@ -29,6 +29,11 @@ class SingleResultPage extends Component {
             });
         }
         
+        if (this.props.piece.metadata) {
+            var people = this.props.piece.metadata.filter(function (el) {
+                return el.label === 'Classification';
+            });
+        }
       
         console.log(date);
         
