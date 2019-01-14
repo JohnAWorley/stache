@@ -10,8 +10,8 @@ const mapStateToProps = reduxStore => {
 
 class SingleResultPage extends Component {
     componentDidUpdate() {
-    
-        console.log(this.props.piece.technique);
+        let string = this.props.piece.all["@id"]
+        console.log(parseInt((string).substring(52)));
         
 
     }
@@ -31,8 +31,16 @@ class SingleResultPage extends Component {
                 <p>{this.props.piece.medium}</p>
                 <p>{this.props.piece.dimensions}</p>
                 <p>{this.props.piece.technique}</p>
-              
 
+
+                <textarea></textarea>
+                <button>save comment</button>
+                <br></br>
+                <button>add to seen list</button>
+                <br></br>
+                <button>add to want to see list</button>
+                <br></br>
+                <button>back</button>
 
             </div>
         )

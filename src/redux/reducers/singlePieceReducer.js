@@ -12,6 +12,7 @@ const piece = (state = {}, action) => {
         classification: "",
         people:"",
         technique: "",
+        id: 0,
 
     }
 
@@ -40,14 +41,14 @@ const piece = (state = {}, action) => {
                 return defaultState.dimensions = "";
             }
 
-            if (action.payload.metadata) {
-                var technique = action.payload.metadata.filter(function (el) {
-                    return el.label === 'Technique';
-                });
-                defaultState.technique = technique.value;
-            } else {
-                return defaultState.technique = "";
-            }
+            // if (action.payload.metadata) {
+            //     var technique = action.payload.metadata.filter(function (el) {
+            //         return el.label === 'Technique';
+            //     });
+            //     defaultState.technique = technique.value;
+            // } else {
+            //     return defaultState.technique = "";
+            // }
 
             if (action.payload.metadata) {
                 var date = action.payload.metadata.filter(function (el) {
@@ -76,7 +77,15 @@ const piece = (state = {}, action) => {
                 return defaultState.people = "";
             }
 
+            if (action.payload) {
+                var id = parseInt((action.payload["@id"].substring(52)))
+                defaultState.id = id;
+            } else {
+                return defaultState.id = 0;
+            }
+
             defaultState.title = action.payload.label;
+            defaultState.all = action.payload
 
 
             return defaultState;
