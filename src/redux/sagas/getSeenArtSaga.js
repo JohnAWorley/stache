@@ -9,7 +9,7 @@ function* getArt() {
         const setSeen = yield axios.get('/api/seen');  // get seen art items
         console.log(`in get seen art saga back with data`, setSeen.data);
 
-        yield dispatch({ type: 'SET_SEEN_ART', payload: artQuery.data })
+        yield dispatch({ type: 'SET_SEEN_ART', payload: setSeen.data })
 
 
     } catch (error) {

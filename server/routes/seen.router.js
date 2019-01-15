@@ -19,14 +19,25 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
-
+router.get('/', rejectUnauthenticated, (req, res) => {
+    console.log(req.user.id);
+    
+    const queryString = `SELECT "piece"."title", "piece"."picture_url", "piece"."object_id", "piece"."comment", "seen_list"."location", "seen_list"."date"
+                        FROM "piece" JOIN "person"
+                        ON "person"."id" = "piece"."person_id"
+                        JOIN "seen_list"
+                        ON "seen_list"."piece_id" = "piece"."id"
+                        WHERE "piece"."person_id" = $1;`;
+    pool.query(queryString, [req.user.id])
+        .then((result) => {
+            console.log(result.rows);
+            res.send(result.rows);
+        }).catch(error => {
+            console.log(error);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;
 
 
-// WITH "person" AS(INSERT INTO "person"
-//     ("username", "password", "full_name",
-//         "email", "img_avatar", "description")
-//                  VALUES($1, $2, $3, $4, $5, $6) RETURNING "id")
-// INSERT INTO "blog"("person_id")
-// SELECT "id" FROM "person";

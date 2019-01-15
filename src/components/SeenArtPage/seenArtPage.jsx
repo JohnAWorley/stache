@@ -14,9 +14,17 @@ class seenArt extends Component{
             type: 'GET_SEEN_ART'
         })
     }
+    
+    hey = () => {
+        console.log(this.props.reduxStore.seenArt);
+        
+    }
     render(){
         return(
-            <div></div>
+            <div>
+                
+            </div>
+           
         )
     }
 }
