@@ -8,10 +8,6 @@ const mapStateToProps = reduxStore => {
     }
 }
 
-
-
-
-
 class SearchResults extends Component {
 
     state = {
@@ -26,12 +22,9 @@ class SearchResults extends Component {
     handleCLick = (id) => {
     
         console.log(`our individual piece id`, id);
-        
-        
         this.props.dispatch({ type: 'FETCH_SINGLE_PIECE', payload: id });
         this.props.history.push('/singleResult');
-        
-
+    
     }
 
     render() {

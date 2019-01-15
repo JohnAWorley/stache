@@ -21,13 +21,23 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log(req.user.id);
-    
-    const queryString = `SELECT "piece"."title", "piece"."picture_url", "piece"."object_id", "piece"."comment", "seen_list"."location", "seen_list"."date"
-                        FROM "piece" JOIN "person"
+
+    const queryString = 
+                    `
+                        SELECT "piece"."title", 
+                        "piece"."picture_url", 
+                        "piece"."object_id", 
+                        "piece"."comment", 
+                        "seen_list"."location", 
+                        "seen_list"."date", 
+                        "seen_list"."id"
+                        FROM "piece" 
+                        JOIN "person"
                         ON "person"."id" = "piece"."person_id"
                         JOIN "seen_list"
                         ON "seen_list"."piece_id" = "piece"."id"
-                        WHERE "piece"."person_id" = $1;`;
+                        WHERE "piece"."person_id" = $1;
+                        `;
     pool.query(queryString, [req.user.id])
         .then((result) => {
             console.log(result.rows);
@@ -36,6 +46,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             console.log(error);
             res.sendStatus(500);
         });
+});
+
+router.delete('/:id', (req, res) => {
+    queryString = `DELETE FROM "seen_list" WHERE "id" = $1;`;
+    let id = req.params.id
+    pool.query(queryString, [id])
+        .then(result => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('error in delete item:', error);
+            res.sendStatus(500);
+        })
+
 });
 
 module.exports = router;

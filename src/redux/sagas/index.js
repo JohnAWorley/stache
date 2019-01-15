@@ -6,6 +6,7 @@ import searchSaga from './searchSaga';
 import pieceSaga from './singlePiece';
 import addSeenArt from './addSeenArtSaga';
 import getSeenArt from './getSeenArtSaga';
+import deleteSeen from './deleteSeenArtSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     pieceSaga(),
     addSeenArt(),
     getSeenArt(),
+    deleteSeen(),
   ]);
 }
