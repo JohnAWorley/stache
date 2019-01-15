@@ -1,17 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import FinalDrawer from '../DrawerComponent/Drawer';
 
-const SeenArt = () => (
-    <div>
-        <FinalDrawer />
-        <div>
-            <p>
-                categorie page
-      </p>
-        </div>
-    </div>
-);
 
-export default connect()(SeenArt);
+class seenArt extends Component{
+    render(){
+        return(
+            <div></div>
+        )
+    }
+}
+
+export default connect()(seenArt);

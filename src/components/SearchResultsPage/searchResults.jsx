@@ -37,6 +37,9 @@ class SearchResults extends Component {
     render() {
         let singlePieceOfResults = this.props.reduxStore.search.map((piece) => {
 
+            console.log(`checking out image url`, piece.primaryimageurl, piece.title);
+            
+
 
             return <div value = {piece.id} key={piece.id} onClick= {() => {this.handleCLick(piece.id)}}> 
                         {piece.title} 

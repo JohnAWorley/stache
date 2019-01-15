@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = reduxStore => {
     return {
@@ -9,12 +10,44 @@ const mapStateToProps = reduxStore => {
 
 
 class SingleResultPage extends Component {
+
     componentDidUpdate() {
-        let string = this.props.piece.all["@id"]
-        console.log(parseInt((string).substring(52)));
+        console.log(this.state);
         
+    }
+
+    state = {
+        id: 0,
+        comment: "",
+        title: "",
+        picture: 0,
 
     }
+
+    handleChange = (event) => {
+        console.log('changing our comment', event)
+        this.setState({
+            comment: event.target.value
+
+        });
+    }
+
+    seenHandleClick = () => {
+       
+         
+       let payload =  {
+            id: this.props.piece.id,
+            comment: this.state.comment,
+            title: this.props.piece.title,
+            picture: this.props.piece.imageUrl
+        };
+
+       console.log(`making sure that payload is here`, payload);
+       
+        this.props.dispatch({ type: 'SEEN_ART', payload: payload });
+        
+    }
+
     render() {
 
     
@@ -32,11 +65,11 @@ class SingleResultPage extends Component {
                 <p>{this.props.piece.dimensions}</p>
                 <p>{this.props.piece.technique}</p>
 
-
-                <textarea></textarea>
+                <p>{this.state.comment}</p>
+                <input onChange={this.handleChange}></input>
                 <button>save comment</button>
                 <br></br>
-                <button>add to seen list</button>
+                <button onClick={this.seenHandleClick}> add to seen list</button>
                 <br></br>
                 <button>add to want to see list</button>
                 <br></br>
@@ -48,4 +81,4 @@ class SingleResultPage extends Component {
     }
 }
 
-export default connect(mapStateToProps)(SingleResultPage);
+export default withRouter(connect(mapStateToProps)(SingleResultPage));
