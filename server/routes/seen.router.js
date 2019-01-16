@@ -28,6 +28,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                         "piece"."picture_url", 
                         "piece"."object_id", 
                         "piece"."comment", 
+                        "seen_list"."piece_id",
                         "seen_list"."location", 
                         "seen_list"."date", 
                         "seen_list"."id"
@@ -56,6 +57,23 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(201);
         }).catch(error => {
             console.log('error in delete item:', error);
+            res.sendStatus(500);
+        })
+
+});
+
+router.put('/comment/', (req, res) => {
+    console.log(req.body);
+    
+    console.log('hitting server post for comment', req.body.id, req.body.comment);
+    queryString = `UPDATE "piece" SET "comment" = $1 WHERE "id" = $2;`
+    let id = req.body.id;
+    let comment = req.body.comment;
+    pool.query(queryString, [comment, id])
+        .then(result => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('error in put comment:', error);
             res.sendStatus(500);
         })
 

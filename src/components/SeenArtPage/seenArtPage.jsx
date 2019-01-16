@@ -33,8 +33,8 @@ class seenArt extends Component {
         this.props.dispatch({ type: 'DELETE_SEEN_PIECE', payload: id });
     }
 
-    updateLocationHandleClick = (id) => {
-
+    updateCommentHandleClick = (id) => {
+        this.props.dispatch({ type: 'UPDATE_COMMENT', payload: {id: id, comment: this.state.comment} });
     }
 
     handleChange = (event) => {
@@ -45,7 +45,7 @@ class seenArt extends Component {
 
     }
 
-    handleInputChangeFor = propertyName => event => {
+    handleInputChangeForDate = propertyName => event => {
         console.log('in handle imput change');
         
         this.setState({
@@ -62,6 +62,8 @@ class seenArt extends Component {
     // }
     render() {
         let singlePieceOfSeenArt = this.props.reduxStore.seenArt.map((piece) => {
+            console.log(`checking for piece.id `, piece);
+            
 
             return <div value={piece.object_id} key={piece.object_id} >
                 {piece.title}
@@ -69,7 +71,7 @@ class seenArt extends Component {
                 <button onClick={() => { this.removePieceHandleClick(piece.id) }}>remove art</button>
                 {piece.comment}
                 <input onChange={this.handleChange} name="comment"></input>
-                <button onClick={() => { this.updateCommentHandleClick(piece.id) }}>update comment</button>
+                <button onClick={() => { this.updateCommentHandleClick(piece.piece_id) }}>update comment</button>
                 {piece.location}
                 <input onChange={this.handleChange} name="location"></input>
                 <button onClick={() => { this.updateLocationHandleClick(piece.id) }}>update location</button>
@@ -80,7 +82,7 @@ class seenArt extends Component {
                     type="date"
                     margin="normal"
                     value={this.state.eventDate}
-                    onChange={this.handleInputChangeFor('eventDate')}
+                    onChange={this.handleInputChangeForDate('eventDate')}
                     //    className={classes.inputStyles}
                     variant="outlined"
                 />
