@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 
 import searchTitleSaga from './searchTitleSaga';
 import searchArtistSaga from './searchArtistSaga';
+import searchCategorySaga from './searchCategorySaga';
 
 import pieceSaga from './singlePiece';
 import addSeenArt from './addSeenArtSaga';
@@ -35,5 +36,6 @@ export default function* rootSaga() {
     editLocation(),
     editDate(),
     searchArtistSaga(),
+    searchCategorySaga(),
   ]);
 }

@@ -15,10 +15,12 @@ class Search extends Component {
     
     state = {
         title: '',
-        artist: ''
+        artist: '',
+        categories: '',
     }
 
     handleChange = (event) => {
+        console.log(this.state.categories);
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -36,6 +38,11 @@ class Search extends Component {
         this.props.history.push('/searchResults')
     }
 
+    handleClickCategories = () => {
+        this.props.dispatch({ type: 'FETCH_ARTIST_ART', payload: this.state.categories })
+        this.props.history.push('/searchResults')
+    }
+
     render(){
         return(
             <div>
@@ -44,6 +51,8 @@ class Search extends Component {
                 <button onClick={this.handleClickTitle}>Submit Search</button>
                 <input onChange={this.handleChange} name="artist" type="text" placeholder="search artist" />
                 <button onClick={this.handleClickArtist}>Submit Search</button>
+                <input onChange={this.handleChange} name="categories" type="text" placeholder="search cateogry" />
+                <button onClick={this.handleClickCategories}>Submit Search</button>
             </div>
         )
     }
