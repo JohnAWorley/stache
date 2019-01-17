@@ -7,6 +7,7 @@ import searchTitleSaga from './searchTitleSaga';
 import searchArtistSaga from './searchArtistSaga';
 import searchCategorySaga from './searchCategorySaga';
 import searchCultureSaga from './searchCultureSaga';
+import searchWorkTypeSaga from './searchWorkTypeSaga';
 
 import pieceSaga from './singlePiece';
 import addSeenArt from './addSeenArtSaga';
@@ -39,5 +40,6 @@ export default function* rootSaga() {
     searchArtistSaga(),
     searchCategorySaga(),
     searchCultureSaga(),
+    searchWorkTypeSaga(),
   ]);
 }

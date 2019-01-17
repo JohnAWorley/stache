@@ -18,6 +18,7 @@ class Search extends Component {
         artist: '',
         categories: '',
         culture: '',
+        worktype: '',
 
     }
 
@@ -49,6 +50,11 @@ class Search extends Component {
         this.props.dispatch({ type: 'FETCH_CULTURE_ART', payload: this.state.culture })
         this.props.history.push('/searchResults')
     }
+    
+    handleClickWorkType = () => {
+        this.props.dispatch({ type: 'FETCH_WORKTYPE_ART', payload: this.state.worktype })
+        this.props.history.push('/searchResults')
+    }
 
     render(){
         return(
@@ -62,6 +68,8 @@ class Search extends Component {
                 <button onClick={this.handleClickCategories}>Submit Search</button>
                 <input onChange={this.handleChange} name="culture" type="text" placeholder="search by culture" />
                 <button onClick={this.handleClickCulture}>Submit Search</button>
+                <input onChange={this.handleChange} name="worktype" type="text" placeholder="search by work type" />
+                <button onClick={this.handleClickWorkType}>Submit Search</button>
             </div>
         )
     }
