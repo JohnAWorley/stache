@@ -37,6 +37,10 @@ class seenArt extends Component {
         this.props.dispatch({ type: 'UPDATE_COMMENT', payload: {id: id, comment: this.state.comment} });
     }
 
+    updateLocationHandleClick = (id) => {
+        this.props.dispatch({ type: 'UPDATE_LOCATION', payload: { id: id, comment: this.state.location } });
+    }
+
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value

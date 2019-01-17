@@ -8,6 +8,7 @@ import addSeenArt from './addSeenArtSaga';
 import getSeenArt from './getSeenArtSaga';
 import deleteSeen from './deleteSeenArtSaga';
 import editComment from './editCommentSaga';
+import editLocation from './editLocationSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -27,5 +28,6 @@ export default function* rootSaga() {
     getSeenArt(),
     deleteSeen(),
     editComment(),
+    editLocation(),
   ]);
 }

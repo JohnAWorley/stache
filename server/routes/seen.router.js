@@ -79,6 +79,23 @@ router.put('/comment/', (req, res) => {
 
 });
 
+router.put('/location/', (req, res) => {
+    console.log(req.body);
+
+    console.log('hitting server post for location', req.body.id, req.body.comment);
+    queryString = `UPDATE "seen_list" SET "location" = $1 WHERE "id" = $2;`
+    let id = req.body.id;
+    let comment = req.body.comment;
+    pool.query(queryString, [comment, id])
+        .then(result => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('error in put location:', error);
+            res.sendStatus(500);
+        })
+
+});
+
 module.exports = router;
 
 
