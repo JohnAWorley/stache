@@ -17,10 +17,12 @@ class Search extends Component {
         title: '',
         artist: '',
         categories: '',
+        culture: '',
+
     }
 
     handleChange = (event) => {
-        console.log(this.state.categories);
+        console.log(this.state.culture);
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -43,16 +45,23 @@ class Search extends Component {
         this.props.history.push('/searchResults')
     }
 
+    handleClickCulture = () => {
+        this.props.dispatch({ type: 'FETCH_CULTURE_ART', payload: this.state.culture })
+        this.props.history.push('/searchResults')
+    }
+
     render(){
         return(
             <div>
             <p>search page</p>
-                <input onChange={this.handleChange} name ="title" type="text" placeholder="search title" />
+                <input onChange={this.handleChange} name ="title" type="text" placeholder="search by title" />
                 <button onClick={this.handleClickTitle}>Submit Search</button>
-                <input onChange={this.handleChange} name="artist" type="text" placeholder="search artist" />
+                <input onChange={this.handleChange} name="artist" type="text" placeholder="search by artist" />
                 <button onClick={this.handleClickArtist}>Submit Search</button>
-                <input onChange={this.handleChange} name="categories" type="text" placeholder="search cateogry" />
+                <input onChange={this.handleChange} name="categories" type="text" placeholder="search by cateogry" />
                 <button onClick={this.handleClickCategories}>Submit Search</button>
+                <input onChange={this.handleChange} name="culture" type="text" placeholder="search by culture" />
+                <button onClick={this.handleClickCulture}>Submit Search</button>
             </div>
         )
     }
