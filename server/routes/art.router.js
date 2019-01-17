@@ -5,7 +5,7 @@ const axios = require('axios');
 
 
 
-router.get('/:id', (req, res) => {
+router.get('/title/:id', (req, res) => {
     let id = req.params.id;
     console.log(id);
 
@@ -16,7 +16,27 @@ router.get('/:id', (req, res) => {
             fields: "objectnumber,title,dated,primaryimageurl"
         }
     }).then(response => {
-        console.log('woot');
+        console.log('in response of object search');
+        console.log(response.data);
+        res.send(response.data);
+    }).catch(error => {
+        console.log('Error:', error);
+        res.sendStatus(500);
+    })
+}); 
+
+router.get('/artist/:id', (req, res) => {
+    let id = req.params.id;
+    console.log(id);
+
+    axios.get(`https://api.harvardartmuseums.org/object/`, {
+        params: {
+            apikey: `${process.env.HARVARD_API_KEY}`,
+            person: `${id}`,
+            fields: "objectnumber,title,dated,primaryimageurl"
+        }
+    }).then(response => {
+        console.log('in response of object search');
         console.log(response.data);
         res.send(response.data);
     }).catch(error => {
@@ -24,5 +44,7 @@ router.get('/:id', (req, res) => {
         res.sendStatus(500);
     })
 })
+
+
 
 module.exports = router;

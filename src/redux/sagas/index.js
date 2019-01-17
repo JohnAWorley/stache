@@ -2,7 +2,10 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
-import searchSaga from './searchSaga';
+
+import searchTitleSaga from './searchTitleSaga';
+import searchArtistSaga from './searchArtistSaga';
+
 import pieceSaga from './singlePiece';
 import addSeenArt from './addSeenArtSaga';
 import getSeenArt from './getSeenArtSaga';
@@ -23,7 +26,7 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    searchSaga(),
+    searchTitleSaga(),
     pieceSaga(),
     addSeenArt(),
     getSeenArt(),
@@ -31,5 +34,6 @@ export default function* rootSaga() {
     editComment(),
     editLocation(),
     editDate(),
+    searchArtistSaga(),
   ]);
 }

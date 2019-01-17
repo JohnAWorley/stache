@@ -14,28 +14,36 @@ class Search extends Component {
 
     
     state = {
-        search: ''
+        title: '',
+        artist: ''
     }
 
     handleChange = (event) => {
         this.setState({
-            search: event.target.value
+            [event.target.name]: event.target.value
         })
     }
 
-    handleClick = () => {
-        this.props.dispatch({ type: 'FETCH_ART', payload: this.state.search })
+    handleClickTitle = () => {
+        this.props.dispatch({ type: 'FETCH_TITLE_ART', payload: this.state.title })
         this.props.history.push('/searchResults')
         
         
+    }
+
+    handleClickArtist= () => {
+        this.props.dispatch({ type: 'FETCH_ARTIST_ART', payload: this.state.artist })
+        this.props.history.push('/searchResults')
     }
 
     render(){
         return(
             <div>
             <p>search page</p>
-                <input onChange={this.handleChange} type="text" placeholder="search title" />
-                <button onClick={this.handleClick}>Submit Search</button>
+                <input onChange={this.handleChange} name ="title" type="text" placeholder="search title" />
+                <button onClick={this.handleClickTitle}>Submit Search</button>
+                <input onChange={this.handleChange} name="artist" type="text" placeholder="search artist" />
+                <button onClick={this.handleClickArtist}>Submit Search</button>
             </div>
         )
     }

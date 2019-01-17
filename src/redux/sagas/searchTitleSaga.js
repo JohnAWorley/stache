@@ -6,7 +6,7 @@ function* fetchArt(action) {
     try {
     
         
-        const artQuery = yield call(axios.get, `/api/art/${action.payload}`); // get art items
+        const artQuery = yield call(axios.get, `/api/art/title/${action.payload}`); // get art items
         console.log(`in fetchart saga back with data`, artQuery.data);
         
         yield dispatch({ type: 'SET_ART', payload: artQuery.data })
@@ -17,6 +17,6 @@ function* fetchArt(action) {
     }
 }
 function* fetchArtWatcher() {
-    yield takeLatest('FETCH_ART', fetchArt);
+    yield takeLatest('FETCH_TITLE_ART', fetchArt);
 }
 export default fetchArtWatcher;
