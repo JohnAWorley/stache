@@ -34,14 +34,14 @@ class SearchResults extends Component {
             
 
 
+            if (!piece.primaryimageurl == ''){
             return <div value = {piece.id} key={piece.id} onClick= {() => {this.handleCLick(piece.id)}}> 
                         {piece.title} 
                         <img src={piece.primaryimageurl} alt=""></img>
-                        
-                        
                     </div>
 
-
+            }
+            
 
 
         })
