@@ -96,6 +96,23 @@ router.put('/location/', (req, res) => {
 
 });
 
+router.put('/date/', (req, res) => {
+    console.log(req.body);
+
+    console.log('hitting server post for date', req.body.id, req.body.comment);
+    queryString = `UPDATE "seen_list" SET "date" = $1 WHERE "id" = $2;`
+    let id = req.body.id;
+    let comment = req.body.comment;
+    pool.query(queryString, [comment, id])
+        .then(result => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('error in put date:', error);
+            res.sendStatus(500);
+        })
+
+});
+
 module.exports = router;
 
 
