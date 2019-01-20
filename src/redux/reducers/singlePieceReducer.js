@@ -1,44 +1,56 @@
+const defaultState = {
+    imageUrl: "",
+    title: "",
+    medium: "",
+    dimensions: "",
+    date: "",
+    classification: "",
+    people: "",
+    technique: "",
+    id: 0,
+
+}
 
 
+const piece = (state = defaultState, action) => {
 
-const piece = (state = {}, action) => {
-
-    const defaultState = {
+    let newPiece = {
         imageUrl: "",
         title: "",
         medium: "",
         dimensions: "",
         date: "",
         classification: "",
-        people:"",
+        people: "",
         technique: "",
         id: 0,
-
     }
 
     switch (action.type) {
+        
+
         case 'SET_PIECE':
             if (action.payload.sequences && action.payload.sequences[0].canvases[0]) {
-                defaultState.imageUrl = action.payload.sequences[0].canvases[0].images[0].resource["@id"]
+                 newPiece.imageUrl = action.payload.sequences[0].canvases[0].images[0].resource["@id"]
             } else {
-                defaultState.imageUrl = ""
+                newPiece.imageUrl = ""
             }
-            if (action.payload.metadata) {
+            if (action.payload.metadata && action.payload.metadata.medium) {
                 var medium = action.payload.metadata.filter(function (el) {
                     return el.label === 'Medium';
                 });
-                defaultState.medium = medium[0].value;
+                newPiece.medium = medium[0].value;
             } else {
-                defaultState.medium = "";
+                newPiece.medium = "";
             }
 
             if (action.payload.metadata) {
                 var dimensions = action.payload.metadata.filter(function (el) {
                     return el.label === 'Dimensions';
                 });
-                defaultState.dimensions = dimensions[0].value;
+                newPiece.dimensions = dimensions[0].value;
             } else {
-                return defaultState.dimensions = "";
+                return newPiece.dimensions = "";
             }
 
             // if (action.payload.metadata) {
@@ -54,41 +66,41 @@ const piece = (state = {}, action) => {
                 var date = action.payload.metadata.filter(function (el) {
                     return el.label === 'Date';
                 });
-                defaultState.date = date[0].value;
+                newPiece.date = date[0].value;
             } else {
-                return defaultState.date = "";
+                newPiece.date = "";
             }
 
             if (action.payload.metadata) {
                 var classification = action.payload.metadata.filter(function (el) {
                     return el.label === 'Classification';
                 });
-                defaultState.classification = classification[0].value;
+                newPiece.classification = classification[0].value;
             } else {
-                return defaultState.classification = "";
+                newPiece.classification = "";
             }
 
             if (action.payload.metadata) {
                 var people = action.payload.metadata.filter(function (el) {
                     return el.label === 'People';
                 });
-                defaultState.people = people[0].value[0];
+                newPiece.people = people[0].value[0];
             } else {
-                return defaultState.people = "";
+                newPiece.people = "";
             }
 
             if (action.payload) {
                 var id = parseInt((action.payload["@id"].substring(52)))
-                defaultState.id = id;
+                newPiece.id = id;
             } else {
-                return defaultState.id = 0;
+                newPiece.id = 0;
             }
 
-            defaultState.title = action.payload.label;
-            defaultState.all = action.payload
+            newPiece.title = action.payload.label;
+            
 
 
-            return defaultState;
+            return newPiece;
         default:
             return state;
     }

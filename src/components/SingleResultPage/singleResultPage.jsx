@@ -47,6 +47,9 @@ class SingleResultPage extends Component {
         this.props.dispatch({ type: 'SEEN_ART', payload: payload });
         
     }
+    goBack = () => {
+        this.props.history.goBack()
+    }
 
     render() {
 
@@ -73,7 +76,7 @@ class SingleResultPage extends Component {
                 <br></br>
                 <button>add to want to see list</button>
                 <br></br>
-                <button>back</button>
+                <button onClick={this.goBack}>back</button>
 
             </div>
         )

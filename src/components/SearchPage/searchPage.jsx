@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import FinalDrawer from '../DrawerComponent/Drawer';
 
 
 const mapStateToProps = reduxStore => {
@@ -59,6 +60,7 @@ class Search extends Component {
     render(){
         return(
             <div>
+            <FinalDrawer />
             <p>search page</p>
                 <input onChange={this.handleChange} name ="title" type="text" placeholder="search by title" />
                 <button onClick={this.handleClickTitle}>Submit Search</button>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import DatePickers from '../DatePicker/datePicker'
+import FinalDrawer from '../DrawerComponent/Drawer';
 
 const mapStateToProps = reduxStore => {
     return {
@@ -65,9 +66,9 @@ class seenArt extends Component {
 
 
 
-    // goBack = () => {
-    //     this.props.history.goBack()
-    // }
+    goBack = () => {
+        this.props.history.goBack()
+    }
     render() {
         let singlePieceOfSeenArt = this.props.reduxStore.seenArt.map((piece) => {
             console.log(`checking for piece.id `, piece);
@@ -95,13 +96,15 @@ class seenArt extends Component {
                     variant="outlined"
                 />
                 <button onClick={() => { this.updateDateHandleClick(piece.id) }}>update date</button>
-                {/* <button onClick={this.goBack}>back button</button> */}
+                
 
 
             </div>
         })
         return (
             <div>
+                <FinalDrawer />
+                <button onClick={this.goBack}>back button</button>
                 {singlePieceOfSeenArt}
             </div>
 

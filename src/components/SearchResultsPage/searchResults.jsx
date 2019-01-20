@@ -26,6 +26,9 @@ class SearchResults extends Component {
         this.props.history.push('/singleResult');
     
     }
+    goBack = () => {
+        this.props.history.goBack()
+    }
 
     render() {
         let singlePieceOfResults = this.props.reduxStore.search.map((piece) => {
@@ -47,8 +50,10 @@ class SearchResults extends Component {
         })
         return (
             <div>
+            <button onClick={this.goBack}>back button</button>
                 {singlePieceOfResults}
             </div>
+
         )
     }
 
