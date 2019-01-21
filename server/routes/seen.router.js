@@ -37,8 +37,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                         ON "person"."id" = "piece"."person_id"
                         JOIN "seen_list"
                         ON "seen_list"."piece_id" = "piece"."id"
-                        WHERE "piece"."person_id" = $1;
-                        `;
+                        WHERE "piece"."person_id" = $1
+                        ORDER BY "seen_list"."id" DESC;`;
     pool.query(queryString, [req.user.id])
         .then((result) => {
             console.log(result.rows);

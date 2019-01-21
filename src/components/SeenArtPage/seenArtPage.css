@@ -3,6 +3,7 @@
   border-radius: 4px;  /* Rounded border */
   padding: 5px; /* Some padding */
   width: 150px; /* Set a small width */
+   display: inline;
 }
 
 .backButton{
@@ -13,7 +14,7 @@
     display: inline;
 }
 
-.comment {
+.props {
     display: inline;
-    
+    list-style-type:none;
 }

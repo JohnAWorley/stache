@@ -74,15 +74,14 @@ class seenArt extends Component {
         let singlePieceOfSeenArt = this.props.reduxStore.seenArt.map((piece) => {
             console.log(`checking for piece.id `, piece);
 
-
             return <div value={piece.object_id} key={piece.object_id} >
                 <h2 className="text" >{piece.title}</h2>
                 <div className="infoDiv">
                     <img className="image" onClick={() => { this.handleCLick(piece.object_id) }} src={piece.picture_url} alt=""></img>
-                    <ul >
-                        <p className="comment">{piece.comment} </p>
-                        <p> {piece.location} </p>
-                        <p> {piece.date} </p>
+                    <ul className="props">
+                        <li >{piece.comment} </li>
+                        <li> {piece.location} </li>
+                        <li> {piece.date} </li>
                     </ul>
                 </div>
                 <br></br>
