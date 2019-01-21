@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import DatePickers from '../DatePicker/datePicker'
-import FinalDrawer from '../DrawerComponent/Drawer';
+// import DatePickers from '../DatePicker/datePicker'
+
+import './seenArtPage.css'
 
 const mapStateToProps = reduxStore => {
     return {
@@ -35,7 +36,7 @@ class seenArt extends Component {
     }
 
     updateCommentHandleClick = (id) => {
-        this.props.dispatch({ type: 'UPDATE_COMMENT', payload: {id: id, comment: this.state.comment} });
+        this.props.dispatch({ type: 'UPDATE_COMMENT', payload: { id: id, comment: this.state.comment } });
     }
 
     updateLocationHandleClick = (id) => {
@@ -56,12 +57,12 @@ class seenArt extends Component {
 
     handleInputChangeForDate = propertyName => event => {
         console.log('in handle imput change');
-        
+
         this.setState({
             [propertyName]: event.target.value,
         });
         console.log(this.state);
-        
+
     }
 
 
@@ -72,19 +73,26 @@ class seenArt extends Component {
     render() {
         let singlePieceOfSeenArt = this.props.reduxStore.seenArt.map((piece) => {
             console.log(`checking for piece.id `, piece);
-            
+
 
             return <div value={piece.object_id} key={piece.object_id} >
-                {piece.title}
-                <img onClick={() => { this.handleCLick(piece.object_id) }} src={piece.picture_url} alt=""></img>
+                <h2 className="text" >{piece.title}</h2>
+                <div className="infoDiv">
+                    <img className="image" onClick={() => { this.handleCLick(piece.object_id) }} src={piece.picture_url} alt=""></img>
+                    <ul >
+                        <p className="comment">{piece.comment} </p>
+                        <p> {piece.location} </p>
+                        <p> {piece.date} </p>
+                    </ul>
+                </div>
+                <br></br>
                 <button onClick={() => { this.removePieceHandleClick(piece.id) }}>remove art</button>
-                {piece.comment}
                 <input onChange={this.handleChange} name="comment"></input>
                 <button onClick={() => { this.updateCommentHandleClick(piece.piece_id) }}>update comment</button>
-                {piece.location}
+
                 <input onChange={this.handleChange} name="location"></input>
                 <button onClick={() => { this.updateLocationHandleClick(piece.id) }}>update location</button>
-                {piece.date}
+
                 <input
                     label=""
                     placeholder="Event Date"
@@ -96,16 +104,15 @@ class seenArt extends Component {
                     variant="outlined"
                 />
                 <button onClick={() => { this.updateDateHandleClick(piece.id) }}>update date</button>
-                
+
 
 
             </div>
         })
         return (
             <div>
-                <FinalDrawer />
-                <button onClick={this.goBack}>back button</button>
                 {singlePieceOfSeenArt}
+                <button className='backButton' onClick={this.goBack}>back</button>
             </div>
 
         )

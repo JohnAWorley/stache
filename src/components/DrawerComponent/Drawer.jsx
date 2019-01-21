@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './drawer.css'
 
 import LogOutButton from '../LogOutButton/LogOutButton';
 
@@ -14,15 +15,19 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
-import WavesIcon from '@material-ui/icons/Waves'
+import WavesIcon from '@material-ui/icons/Waves';
 
 const useStyles = makeStyles({
     list: {
         width: 250,
+        backgroundColor: '#abd7cb',
+        
     },
     fullList: {
         width: 'auto',
+        
     },
+
 });
 
 function FinalDrawer() {
@@ -51,18 +56,6 @@ function FinalDrawer() {
                         <ListItemText primary="Seen Art" />
                     </ListItem>
                 </Link>
-                <Link to="/wantToSeePage">
-                    <ListItem button key='Want To See'>
-                        <ListItemIcon><MailIcon /></ListItemIcon>
-                        <ListItemText primary="Want To See" />
-                    </ListItem>
-                </Link>
-                <Link to="/categories">
-                    <ListItem button key='Categories'>
-                        <ListItemIcon><MailIcon /></ListItemIcon>
-                        <ListItemText primary="Categories" />
-                    </ListItem>
-                </Link>
             </List>
 
             <Divider />
@@ -81,9 +74,9 @@ function FinalDrawer() {
                     </ListItem>
                 </Link>
                 <Link to="/about">
-                    <ListItem button key='Categories'>
+                    <ListItem button key='About'>
                         <ListItemIcon><MailIcon /></ListItemIcon>
-                        <ListItemText primary="Categories" />
+                        <ListItemText primary="About" />
                     </ListItem>
                 </Link>
                 <LogOutButton />
@@ -94,9 +87,9 @@ function FinalDrawer() {
 
 
     return (
-        <div>
-            <Button onClick={toggleDrawer('left', true)}><WavesIcon /></Button>
-            <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+        <div className= "totalDiv">
+            <Button className = "button" onClick={toggleDrawer('left', true)}><WavesIcon className="icon" /></Button>
+            <Drawer className={classes.paper} open={state.left} onClose={toggleDrawer('left', false)}>
                 <div
                     tabIndex={0}
                     role="button"

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import './singleResultPage.css'
 
 const mapStateToProps = reduxStore => {
     return {
@@ -60,23 +61,24 @@ class SingleResultPage extends Component {
             <div>
                 
                 <h1>{this.props.piece.title}</h1>
-                <img src={this.props.piece.imageUrl} alt=""></img>
-                <p>{this.props.piece.date}</p>
-                <p>{this.props.piece.classification}</p>
-                <p>{this.props.piece.people}</p>
-                <p>{this.props.piece.medium}</p>
-                <p>{this.props.piece.dimensions}</p>
-                <p>{this.props.piece.technique}</p>
-
-                <p>{this.state.comment}</p>
-                <input onChange={this.handleChange}></input>
-                <button>save comment</button>
+                <img className ="mainImage" src={this.props.piece.imageUrl} alt=""></img>
+                <p className="info">{this.props.piece.date}</p>
+                <p className="info" >{this.props.piece.classification}</p>
+                <p className="info">{this.props.piece.people}</p>
+                <p className="info">{this.props.piece.medium}</p>
+                <p className="info">{this.props.piece.dimensions}</p>
+                <p className="info">{this.props.piece.technique}</p>
+                <p className="info">{this.state.comment}</p>
+                <div className="buttons">
+                <input className= "info" onChange={this.handleChange}></input>
+                <button >save comment</button>
+                    <br></br>
+                    <button onClick={this.seenHandleClick}> add to seen list</button>
+                </div>
+                
+                
                 <br></br>
-                <button onClick={this.seenHandleClick}> add to seen list</button>
-                <br></br>
-                <button>add to want to see list</button>
-                <br></br>
-                <button onClick={this.goBack}>back</button>
+                <button className="back" onClick={this.goBack}>back</button>
 
             </div>
         )

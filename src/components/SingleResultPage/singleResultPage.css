@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+}
+.mainImage {
+  background-color:#ddc;
+  border:solid 5vmin #eee;
+  border-bottom-color:#fff;
+  border-left-color:#eee;
+  border-radius:2px;
+  border-right-color:#eee;
+  border-top-color:#ddd;
+  box-shadow:0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+  box-sizing:border-box;
+  display:inline-block;
+  /* margin:10vh 10vw; */
+  height:80vh;
+  padding:8vmin;
+  position:relative;
+  text-align:center;
+  margin-left: 30%;
+  margin-right: 30%;
+ 
+}
+
+.info {
+    text-align:center;
+}
+
+.buttons {
+    text-align:center;
+}
+
+.back {
+    float: right;
+}
