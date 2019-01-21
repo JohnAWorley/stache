@@ -16,6 +16,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
 import WavesIcon from '@material-ui/icons/Waves';
+import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles({
     list: {
@@ -46,13 +47,13 @@ function FinalDrawer() {
             <List>
                 <Link to="/search">
                     <ListItem button key='Search'>
-                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemIcon><Icon /></ListItemIcon>
                         <ListItemText primary="Search" />
                     </ListItem>
                 </Link>
                 <Link to="/seenArt">
                     <ListItem button key='Seen Art'>
-                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemIcon><Icon /></ListItemIcon>
                         <ListItemText primary="Seen Art" />
                     </ListItem>
                 </Link>
@@ -63,23 +64,23 @@ function FinalDrawer() {
             <List>
                 <Link to="/home">
                     <ListItem button key='Home'>
-                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemIcon><Icon /></ListItemIcon>
                         <ListItemText primary="Home" />
                     </ListItem>
                 </Link>
                 <Link to="/info">
                     <ListItem button key='Info'>
-                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemIcon><Icon /></ListItemIcon>
                         <ListItemText primary="Info" />
                     </ListItem>
                 </Link>
                 <Link to="/about">
                     <ListItem button key='About'>
-                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemIcon><Icon /></ListItemIcon>
                         <ListItemText primary="About" />
                     </ListItem>
                 </Link>
-                <LogOutButton />
+                <LogOutButton className="loggout"/>
             </List>
         </div>
     );

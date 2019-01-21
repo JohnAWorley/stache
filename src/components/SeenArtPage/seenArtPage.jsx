@@ -85,10 +85,8 @@ class seenArt extends Component {
                     </ul>
                 </div>
                 <br></br>
-                <button onClick={() => { this.removePieceHandleClick(piece.id) }}>remove art</button>
                 <input onChange={this.handleChange} name="comment"></input>
                 <button onClick={() => { this.updateCommentHandleClick(piece.piece_id) }}>update comment</button>
-
                 <input onChange={this.handleChange} name="location"></input>
                 <button onClick={() => { this.updateLocationHandleClick(piece.id) }}>update location</button>
 
@@ -103,7 +101,7 @@ class seenArt extends Component {
                     variant="outlined"
                 />
                 <button onClick={() => { this.updateDateHandleClick(piece.id) }}>update date</button>
-
+                <button onClick={() => { this.removePieceHandleClick(piece.id) }}>remove art</button>
 
 
             </div>
